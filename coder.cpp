@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-//º¯Êı³õÊ¼»¯ 
+//å‡½æ•°åˆå§‹åŒ– 
 void conver(int num_in); 
 
 int main ()
@@ -27,29 +27,29 @@ int main ()
 //	int w5[] = {};
 	
 
-	for (int i = 0;i < (sizeof(w1) / sizeof(w1[0])); i++)
+	for (int i = 0;i < (sizeof(w2) / sizeof(int)); i++)
 		{
-			printf("	parameter w%d_1 = ", i);
-			conver(w1[i]);	
+			printf("	parameter w%d_2 = ", i);
+			conver(w2[i]);	
 		} 
  } 
  
  
  
-//×ÔÉèº¯ÊıÇøÓò 
+//è‡ªè®¾å‡½æ•°åŒºåŸŸ 
  
-//ÓĞ·ûºÅÊ®½øÖÆ×ª»»ÓĞ·ûºÅN½øÖÆ
+//æœ‰ç¬¦å·åè¿›åˆ¶è½¬æ¢æœ‰ç¬¦å·Nè¿›åˆ¶
 
-#define NUM 2	// N½øÖÆĞŞ¸Ä 
-#define BIT	21 //  ×ª»»ºóÎ»Êı 
+#define NUM 2	// Nè¿›åˆ¶ä¿®æ”¹ 
+#define BIT	21 //  è½¬æ¢åä½æ•° 
 
 void conver(int num_in)
 {
-	int num	;
-	int flag;
-	int a[BIT];
-	int i=1,j,m;
-	int seg	;
+	int num		;
+	int flag	;
+	int a[BIT]	;
+	int i=1,j,m	;
+	int seg		;
 	printf("%d'b",BIT);
 	if (num_in < 0)
 		{
@@ -57,7 +57,11 @@ void conver(int num_in)
 			num = 0-num_in; 
 		}
 	else 
+	{
 		num = num_in;
+		flag = 0	;
+	}
+		
 	for(j=0;j<BIT;j++)
 	{
 		i=num%NUM;
@@ -71,22 +75,20 @@ void conver(int num_in)
 				a[m]  = 0;
 			else
 				a[m]  = 1;
-		}
-	
-	if (flag)
-		{
+				
 			for(j=0;j<BIT;j++)
-		{
-			if(j==0)
-				a[j]++;
-			if(a[j] + seg > 1)
 				{
-					a[j] = a[j] + seg - 2;
-					seg = 1;
+					if(j==0)
+						a[j]++;
+					if(a[j] + seg > 1)
+						{
+							a[j] = a[j] + seg - 2;
+							seg = 1;
+						}
+					else
+						seg = 0;
 				}
-			else
-				seg = 0;
-		}		
+	
 		}
 	
 	for(j=BIT - 1;j>=0;j--)
